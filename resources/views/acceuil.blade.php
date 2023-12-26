@@ -40,6 +40,11 @@
 </head>
 
 <body>
+    @if (session('status'))
+    <div class="alert alert-success">
+    {{session('status')}}
+    </div>
+    @endif
 
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top">
@@ -83,11 +88,7 @@
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
 
-                @if (session('status'))
-                <div class="alert alert-success">
-                {{session('status')}}
-                </div>
-                @endif
+               
 
             </nav><!-- .navbar -->
 
@@ -112,7 +113,95 @@
                 </div>
             </div>
             <div class="text-center">
-                <button><a href="{{route('demandes.create')}}" class="btn btn-info ">Faire ma demande</a></button>
+                <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Faire ma demande
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Veuillez remplir ce formualaire</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form method="POST" action="{{ route('demandes.store') }}" class="row g-3"
+            enctype="multipart/form-data">
+            @csrf
+            <div class="col-md-6">
+                <label for="inputName5" class="form-label"> </label>
+                <input type="text" class="form-control" name="nom" placeholder="Nom">
+            </div>
+           
+            <div class="col-md-6">
+                <label for="inputEmail5" class="form-label"></label>
+                <input type="text" class="form-control" name="prenom" placeholder="Prénom">
+            </div>
+
+
+
+            <div class="col-md-6">
+                <label for="validationCustom04"></label>
+                <select class="form-control" id="validationCustom04" name="sexe" required>
+                    <option selected disabled value="">Sexe...</option>
+                    <option>Homme</option>
+                    <option>Femme</option>
+                </select>
+                <div class="invalid-feedback">
+                    Svp veuillez choisir votre genre!
+                </div>
+            </div>
+
+            <div class="col-6">
+                <label for="inputAddress5" class="form-label"></label>
+                <input type="text" class="form-control" name="nationalite" placeholder="nationalité">
+            </div>
+
+
+            <div class="col-6">
+                <label for="inputAddress5" class="form-label"></label>
+                <input type="text" class="form-control" name="numero_progres" placeholder="N*ProGres">
+            </div>
+
+            <div class="col-6 ">
+                <label for="inputName5" class="form-label">Attestation </label>
+                <input type="file" name="photo_attestation" class="form-control"
+                    placeholder="Attestation">
+            </div>
+
+            <div class="col-6">
+                <label for="inputAddress5" class="form-label"></label>
+                <input type="number" class="form-control" name="telephone" placeholder="Téléphone">
+            </div>
+            
+            <div class="col-6">
+                <label for="inputAddress5" class="form-label"> </label>
+                <input type="text" class="form-control" name="motif" placeholder="Motif de la demande">
+            </div>
+
+
+
+            <div class="col-6">
+
+                <select name="statut" class="form-select" hidden>
+                    <option value="En attente">
+                    <option>
+                </select>
+            </div>
+
+
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+          <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </div>
+    </div>
+    </form>
+      </div>
+    </div>
+  </div>
             </div>
             <br>
             <br>
@@ -1021,66 +1110,81 @@
                         frameborder="0" allowfullscreen></iframe>
                 </div>
 
-                <div class="row mt-5">
-
-                    <div class="col-lg-4">
-                        <div class="info">
-                            <div class="address">
-                                <i class="bi bi-geo-alt"></i>
-                                <h4>Location:</h4>
-                                <p>A108 Adam Street, New York, NY 535022</p>
-                            </div>
-
-                            <div class="email">
-                                <i class="bi bi-envelope"></i>
-                                <h4>Email:</h4>
-                                <p>info@example.com</p>
-                            </div>
-
-                            <div class="phone">
-                                <i class="bi bi-phone"></i>
-                                <h4>Call:</h4>
-                                <p>+1 5589 55488 55s</p>
-                            </div>
-
+                <section id="contact" class="contact">
+                    <div class="container" data-aos="fade-up">
+                
+                        @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
                         </div>
-
-                    </div>
-
-                    <div class="col-lg-8 mt-5 mt-lg-0">
-
-                        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                            <div class="row gy-2 gx-md-3">
-                                <div class="col-md-6 form-group">
-                                    <input type="text" name="name" class="form-control" id="name"
-                                        placeholder="Your Name" required>
+                    @endif
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li class="alert alert-danger"> {{ $error }}</li>
+                        @endforeach
+                    </ul>
+                
+                        <div class="row mt-5">
+                
+                            <div class="col-lg-4">
+                                <div class="info">
+                                    <div class="address">
+                                        <i class="bi bi-geo-alt"></i>
+                                        <h4>Location:</h4>
+                                        <p>A108 Adam Street, New York, NY 535022</p>
+                                    </div>
+                
+                                    <div class="email">
+                                        <i class="bi bi-envelope"></i>
+                                        <h4>Email:</h4>
+                                        <p>info@example.com</p>
+                                    </div>
+                
+                                    <div class="phone">
+                                        <i class="bi bi-phone"></i>
+                                        <h4>Call:</h4>
+                                        <p>+1 5589 55488 55s</p>
+                                    </div>
+                
                                 </div>
-                                <div class="col-md-6 form-group">
-                                    <input type="email" class="form-control" name="email" id="email"
-                                        placeholder="Your Email" required>
-                                </div>
-                                <div class="form-group col-12">
-                                    <input type="text" class="form-control" name="subject" id="subject"
-                                        placeholder="Subject" required>
-                                </div>
-                                <div class="form-group col-12">
-                                    <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-                                </div>
-                                <div class="my-3 col-12">
-                                    <div class="loading">Loading</div>
-                                    <div class="error-message"></div>
-                                    <div class="sent-message">Your message has been sent. Thank you!</div>
-                                </div>
-                                <div class="text-center col-12"><button type="submit">Send Message</button></div>
+                
                             </div>
-                        </form>
-
+                
+                            <div class="col-lg-8 mt-5 mt-lg-0">
+                
+                                <form action="{{route('contactpost')}}" method="POST" role="form" class="php-email-form">
+                                    @csrf
+                                    <div class="row gy-2 gx-md-3">
+                                        <div class="col-md-6 form-group">
+                                            <input type="text" name="name" class="form-control" id="name"
+                                                placeholder="Your Name" required>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <input type="email" class="form-control" name="email" id="email"
+                                                placeholder="Your Email" required>
+                                        </div>
+                                        <div class="form-group col-12">
+                                            <input type="text" class="form-control" name="subject" id="subject"
+                                                placeholder="Subject" required>
+                                        </div>
+                                        <div class="form-group col-12">
+                                            <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                                        </div>
+                                        <div class="my-3 col-12">
+                                            <div class="loading">Loading</div>
+                                            <div class="error-message"></div>
+                                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                                        </div>
+                                        <div class="text-center col-12 btn btn"><button class="btn btn-info" type="submit">Envoyer Message</button></div>
+                                    </div>
+                                </form>
+                
+                            </div>
+                
+                        </div>
+                
                     </div>
-
-                </div>
-
-            </div>
-        </section><!-- End Contact Section -->
+                </section><!-- End Contact Section -->
 
     </main><!-- End #main -->
 

@@ -9,7 +9,7 @@
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 </head>
-<body>
+<body class="bg-dark">
   <div class="container">
     <div class="row px-3">
       <div class="col-lg-10 col-xl-9 card flex-row mx-auto px-0">

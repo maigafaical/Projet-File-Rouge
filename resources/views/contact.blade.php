@@ -38,19 +38,19 @@
                     <div class="address">
                         <i class="bi bi-geo-alt"></i>
                         <h4>Location:</h4>
-                        <p>A108 Adam Street, New York, NY 535022</p>
+                        <p>Ouagadougou, BURKINA FASO</p>
                     </div>
 
                     <div class="email">
                         <i class="bi bi-envelope"></i>
                         <h4>Email:</h4>
-                        <p>info@example.com</p>
+                        <p>refugeeplateforme78@example.com</p>
                     </div>
 
                     <div class="phone">
                         <i class="bi bi-phone"></i>
-                        <h4>Call:</h4>
-                        <p>+1 5589 55488 55s</p>
+                        <h4>Téléphone:</h4>
+                        <p>+226/54582248</p>
                     </div>
 
                 </div>
@@ -78,9 +78,9 @@
                             <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
                         </div>
                         <div class="my-3 col-12">
-                            <div class="loading">Loading</div>
+                            <div class="loading">envoie...</div>
                             <div class="error-message"></div>
-                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                            <div class="sent-message">Votre message a été bien envoyé.Merci de patienter!!</div>
                         </div>
                         <div class="text-center col-12 btn"><button type="submit">Send Message</button></div>
                     </div>

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Mail;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail as FacadesMail;
 
 class ContactController extends Controller
 {
@@ -52,8 +54,9 @@ class ContactController extends Controller
                 'subject'=> $request->subject,
                 'body'=> $request->message,
             ];
+            return redirect()->back()->with('success','Votre mail a bien été envoyé!');
 
-        \Mail::send('email-template', $mail_data, function($message) use ($mail_data){
+        Mail::send('email-template', $mail_data, function($message) use ($mail_data){
             $message->to($mail_data['recipient'])
                     ->from($mail_data['fromEmail'],$mail_data['fromName'])
                     ->subject($mail_data['subject']);

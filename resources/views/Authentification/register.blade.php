@@ -48,10 +48,10 @@
               <span><i class="fa fa-key"></i></span>
               <input type="password" name="password" placeholder="Mot de passe" required>
             </div>
-            <div class="form-input">
+            {{-- <div class="form-input">
                 <span><i class="fa fa-key"></i></span>
                 <input type="password" name="password" placeholder="Confirmez le mot de passe" >
-              </div>
+              </div> --}}
   
             <div class="mb-3">
               <div class="custom-control custom-checkbox">

@@ -3,6 +3,7 @@ use App\Http\Controllers\AuthentificationController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DemandeController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,7 +35,7 @@ Route::get('/register', function () {
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboardadmin');
 });
 
 Route::get('/register', [AuthController::class, 'register'])->name('register');
@@ -59,6 +60,8 @@ Route::post('loginadmin', [AuthentificationController::class, 'login'])->name('l
 Route::delete('logoutadmin',[AuthentificationController::class, 'logout'] )->name('logoutadmin');
 
 Route::resource('demandes', DemandeController::class);
+Route::resource('users', UsersController::class);
+Route::get('supprimer-users/{id}', [UsersController::class, 'destroy']);
 Route::get('supprimer-demandes/{id}', [DemandeController::class, 'destroy']);
 
 

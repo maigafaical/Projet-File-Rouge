@@ -53,6 +53,26 @@
             </ul>
         </li><!-- End Components Nav_1 -->
 
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#components-nav_1" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Gestion de compte</span><i
+                    class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav_1" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{route('users.index')}}">
+                        <i class="bi bi-circle"></i><span>Liste Utilisateurs</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bi bi-circle"></i><span>Ajouter Utilisateurs</span>
+                    </a>
+                </li>
+
+            </ul>
+        </li><!-- End Components Nav_1 -->
+
     </ul>
 
 </aside>
